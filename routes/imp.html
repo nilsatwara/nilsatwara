@@ -1,0 +1,81 @@
+call to view :
+
+Route::get('/{welcome2}', function ($welcome2) {
+return view('welcome',['welcome2'=>$welcome2]);
+});
+
+<h1 style="color: red;">Hello {{$welcome2}} World</h1>
+
+<!-- ************************************************************ -->
+
+
+call to controller : use <command> php artisan make:controller <controllername>
+        Route::get('User', [UserController::class, 'index']);
+
+        <!-- ************************************************************ -->
+
+        call to view through controller:
+        Route::get('User/{nilesh}', [newcontrol::class, 'loadView']);
+
+        function loadView($nilesh){
+
+        return view('User',["nilesh" => $nilesh]);
+        }
+
+        <!-- ************************************************************ -->
+        call to header or footer:
+
+        Route::view('path', 'file name');
+
+        <command>: component: php artisan make:component <component name>
+
+                important: two types of laravel blade template syntax 1. {{$example}} use for echo and this syntax not
+                able to decode html
+
+                2. {!!$example!!} use for echo and this syntax able to decode html
+
+                @include
+                @extends
+                @yeild
+                @section
+                @endsection
+
+                make single action controller :
+                php artisan make:controller singleactioncontroller --invokable
+                <!-- through single action controller invoke only one function  -->
+
+                migrate table <command>
+                    php artisan migrate(sending all table to database)
+                    php artisan make:migration create_table_name_table(given table name)
+
+                    php artisan migrate or php artisan migrate -force(using for send new table to database which newly
+                    created)
+                    php artisan migrate:rollback(using for delete table)
+                    php artisan migrate:refresh (create relation with all tables migrate table)
+                    php artisan make:migration add_column_to_table_name
+
+
+                    ******************************<-Model->********************************
+                        php artisan make:model <model_name>
+                            php artisan make:model product --migration(using for model with migration)
+
+                            composer dump-autoload //for autoload
+
+                            php artisan make:migration add_deleted_at_to_customer_table
+
+                            <!-- make seeder -->
+                            php artisan make:seeder customerseeder
+                            <!-- for insert fake  data through seeder -->
+                            php artisan db:seed
+
+                            <!-- for customize all files -->
+                            php artisan stub:publish
+
+                            <!-- for create group table -->
+
+                            php artisan make:migration create_group_table
+
+                            <!-- for create members table -->
+                            php artisan make:migration create_members_table
+
+                            <!-- error(Property [getGroup] does not exist on this collection instance.) -->
